@@ -1,8 +1,9 @@
+import { use, useState } from "react";
 function EpisodeItem({title, rating, duration}) {
-  let votes = 0;
+  const [votes,votescounter]=useState(0);
 
   const addVote = () => {
-    votes = votes + 1;
+    votescounter(votes+1)
     console.log("votes:", votes);
   };
 
