@@ -1,9 +1,10 @@
 import EpisodeItem from "./EpisodeItem.jsx";
 
 function SeasonList({seasons}) {
+  if(seasons.length === 0)
+    return <p className="empty">לסדרה הזאת עוד אין פרקים</p>
   return (
     <div className="season-list">
-      {seasons.length === 0 &&<p className="empty">לסדרה הזאת עוד אין פרקים</p>}
       {seasons.length &&
         seasons.map(season => (
           <div className="season" key={season.number}>

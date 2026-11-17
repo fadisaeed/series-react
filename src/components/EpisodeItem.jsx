@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 function EpisodeItem({title, rating, duration}) {
   const [votes,votescounter]=useState(0);
 
