@@ -1,6 +1,6 @@
 import EpisodeItem from "./EpisodeItem.jsx";
 
-function SeasonList({ seasons }) {
+function SeasonList({seasons}) {
   return (
     <div className="season-list">
       {seasons.length === 0 &&<p className="empty">לסדרה הזאת עוד אין פרקים</p>}
