@@ -1,16 +1,29 @@
-# React + Vite
+SeriesHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+פרויקט React להצגת קטלוג סדרות טלוויזיה. האתר מאפשר לצפות במידע על סדרות, להציג עונות ופרקים, לשמור סדרות, לסנן סדרות שעדיין משודרות ולמיין אותן לפי שנת התחלה.
 
-Currently, two official plugins are available:
+ הרצת הפרויקט
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+תחילה יש להתקין את הספריות הנדרשות:
 
-## React Compiler
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+לאחר מכן מפעילים את שרת הפיתוח:
 
-## Expanding the ESLint configuration
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+פותחים בדפדפן את הכתובת שמופיעה בטרמינל.
+
+ תשובות לשאלות
+
+1. למה המסך לא השתנה כשהמשתנה votes גדל, ומה useState עושה אחרת?
+
+כאשר השתמשנו במשתנה רגיל votes, הערך שלו השתנה בזיכרון אבל React לא ידע שצריך לעדכן את המסך. בנוסף, ברינדור מחדש המשתנה הרגיל מאותחל שוב לאפס. לעומת זאת, useState שומר את הערך בין רינדורים, וכאשר משתמשים בפונקציית העדכון שלו, React מרנדר מחדש את הרכיב ומציג את מספר ההצבעות החדש.
+
+ 2. איזה key בחרתם ב־SeriesList, ולמה לא כדאי להשתמש במיקום במערך (index)?
+
+בחרנו להשתמש ב־serie.id בתור key, מכיוון שזהו מזהה ייחודי וקבוע לכל סדרה. לא כדאי להשתמש ב־index מכיוון שהמיקום של סדרה במערך יכול להשתנות בעקבות סינון או מיון. במקרה כזה React עלול לשייך מצב של רכיב לסדרה אחרת, בעוד שמזהה קבוע מאפשר לו לזהות כל סדרה בצורה נכונה.
+
+ 3. למה מיינתם עותק, ומה היה קורה למערך series אם הייתם ממיינים אותו עצמו?
+
+מיינו עותק של המערך באמצעות [...series] כדי לא לשנות את הנתונים המקוריים. הפעולה sort() משנה את המערך שעליו היא מופעלת, ולכן אם היינו ממיינים ישירות את series, הסדר המקורי שלו היה משתנה. כתוצאה מכך, גם אחרי כיבוי כפתור המיון, הסדרות לא בהכרח היו חוזרות
